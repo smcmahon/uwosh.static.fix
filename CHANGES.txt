@@ -4,7 +4,9 @@ Changelog
 0.0.1b3
 -------
 
-Make it work with Plone 3.3.6
+- Work with "img" tags as well as "a".
+
+- Make it work with Plone 3.3.6
 
 0.0.1b
 ----------------

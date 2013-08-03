@@ -28,7 +28,7 @@ long_description = (
 
 setup(name='uwosh.static.fix',
       version=version,
-      description="Fixes Relative Links in Static Portlets",
+      description="Fixes Relative URLs in Static Portlet links and images",
       long_description=long_description,
       # Get more strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
@@ -36,9 +36,13 @@ setup(name='uwosh.static.fix',
         "Programming Language :: Python",
         ],
       keywords='static portlet fix patch relative links',
-      author='David Hietpas',
-      author_email='hietpasd@uwosh.edu',
-      url='http://svn.plone.org/svn/collective/',
+      # Original:
+      # author='David Hietpas',
+      # author_email='hietpasd@uwosh.edu',
+      # Update:
+      author='Steve McMahon',
+      author_email='steve@dcn.org',
+      url='https://github.com/smcmahon/uwosh.static.fix',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['uwosh', 'uwosh.static'],

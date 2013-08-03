@@ -1,0 +1,47 @@
+Setup::
+
+    >>> browser = self.browser
+    >>> self.loginAsManager()
+
+Sanity check::
+
+    >>> browser.open('http://nohost/plone')
+    >>> browser.url
+    'http://nohost/plone'
+
+Create a little hierarchy of folders and a target page::
+
+    >>> browser.getLink(id='folder').click()
+    >>> ctrl = browser.getControl(name='title')
+    >>> ctrl.value = 'Layer One'
+    >>> browser.getControl(name='form.button.save').click()
+    >>> browser.url
+    'http://nohost/plone/layer-one/'
+
+    >>> browser.getLink(id='folder').click()
+    >>> ctrl = browser.getControl(name='title')
+    >>> ctrl.value = 'Layer Two'
+    >>> browser.getControl(name='form.button.save').click()
+    >>> browser.url
+    'http://nohost/plone/layer-one/layer-two/'
+
+    >>> browser.getLink(id='document').click()
+    >>> ctrl = browser.getControl(name='title')
+    >>> ctrl.value = 'Target'
+    >>> browser.getControl(name='form.button.save').click()
+    >>> browser.url
+    'http://nohost/plone/layer-one/layer-two/target'
+
+Create a static portlet at level one with a relative link::
+
+    >>> browser.open('http://nohost/plone/layer-one/++contextportlets++plone.rightcolumn/+/plone.portlet.static.Static')
+    >>> browser.getControl(name="form.header").value = 'link test'
+    >>> browser.getControl(name="form.text").value = """<html><body><a href="layer-one/layer-two/target">Link Down</a></body></html>"""
+    >>> browser.getControl(name="form.actions.save").click()
+
+The link should have become absolute::
+
+    >>> browser.open('http://nohost/plone/layer-one')
+    >>> '<a href="http://nohost/plone/layer-one/layer-two/target">Link Down</a>' in browser.contents
+    True
+
