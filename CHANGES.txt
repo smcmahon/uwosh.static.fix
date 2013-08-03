@@ -1,0 +1,23 @@
+Changelog
+=========
+
+0.0.1b3
+-------
+
+Make it work with Plone 3.3.6
+
+0.0.1b
+----------------
+- Simple fix.
+- Fixes url's in the Static Portlets for internal/external absolute and relative links.
+
+0.0.1
+----------------
+- Initial
+
+
+0.0.0 (unreleased)
+----------------
+
+- Created recipe with ZopeSkel
+  [David Hietpas]

@@ -1,0 +1,28 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:cmf="http://namespaces.zope.org/cmf"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="uwosh.static.fix">
+
+	<five:registerPackage package="." initialize=".initialize" />
+
+	<include package="plone.app.portlets" />
+    <plone:portletRenderer
+		portlet="plone.portlet.static.static.IStaticPortlet"
+		class=".staticfix.Renderer"
+		layer="uwosh.static.fix.interfaces.ICustomBrowserLayer"
+     />
+    
+  <genericsetup:registerProfile
+      name="default"
+      title="uwosh.static.fix"
+      directory="profiles/default"
+      description='Extension profile for the "uwosh.static.fix" Plone theme.'
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+    
+
+</configure>
